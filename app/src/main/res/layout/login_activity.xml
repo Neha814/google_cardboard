@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo"/>
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:visibility="gone"
+        android:layout_marginBottom="80dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+   <!-- <android.support.design.widget.TextInputLayout
+        android:id="@+id/email_layout"
+        android:background="@drawable/edt_box_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">-->
+
+        <EditText
+            android:id="@+id/email_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="@color/colorPrimary"
+            android:background="@drawable/edt_box_bottom"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:inputType="textEmailAddress"
+            android:singleLine="true" />
+
+   <!-- </android.support.design.widget.TextInputLayout>-->
+
+    <!--<android.support.design.widget.TextInputLayout
+        android:id="@+id/name_layout"
+        android:textSize="18dp"
+        android:background="@drawable/edt_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">-->
+
+        <EditText
+            android:id="@+id/name_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:textColorHint="@color/colorPrimary"
+            android:drawableLeft="@drawable/ic_name"
+            android:drawablePadding="10dp"
+            android:background="@drawable/edt_box"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:inputType="textCapWords"
+            android:singleLine="true" />
+
+    <!--</android.support.design.widget.TextInputLayout>-->
+
+    <Button
+        android:id="@+id/play_bt"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
+        android:background="@drawable/button_click"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="PlAY NOW"/>
+
+    </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>
