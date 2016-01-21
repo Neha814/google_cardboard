@@ -100,7 +100,7 @@ public class SetBackground extends Fragment {
         imgList.add(R.drawable.bg_twofour);
         imgList.add(R.drawable.bg_twofive);
         imgList.add(R.drawable.bg_twosix);
-     
+
 
 
 

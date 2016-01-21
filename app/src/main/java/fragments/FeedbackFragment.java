@@ -307,11 +307,81 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                // CallAPIToDeleteUserInfo();
+                 CallAPIToDeleteUserInfo();
 
             }
         });
 
 
     }
+
+    private void CallAPIToDeleteUserInfo() {
+        // http://phphosting.osvin.net/GoogleCardboard/WEB_API/delete_info.php
+        //1. user_id-
+
+        RequestParams params = new RequestParams();
+        params.put("user_id", sp.getString("Id",""));
+
+        Log.e("parameters", params.toString());
+        Log.e("URL", Constants.DELETE_INFO_URL + "?" + params.toString());
+        client.post(getActivity(), Constants.DELETE_INFO_URL, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    Log.e("onsuccess", response.toString());
+                    if (response.getBoolean("ResponseCode")) {
+                        StringUtils.showDialog(response.getString("Message"), getActivity());
+
+                    } else {
+                        StringUtils.showDialog(response.getString("Message"), getActivity());
+                    }
+                } catch (Exception e) {
+                    feedback_edt.setText("");
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, responseString + "/" + statusCode);
+                if (headers != null && headers.length > 0) {
+                    for (int i = 0; i < headers.length; i++)
+                        Log.e("here", headers[i].getName() + "//" + headers[i].getValue());
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.e(TAG, "/" + statusCode);
+                if (headers != null && headers.length > 0) {
+                    for (int i = 0; i < headers.length; i++)
+                        Log.e("here", headers[i].getName() + "//" + headers[i].getValue());
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                Log.e(TAG, "/" + statusCode);
+                if (headers != null && headers.length > 0) {
+                    for (int i = 0; i < headers.length; i++)
+                        Log.e("here", headers[i].getName() + "//" + headers[i].getValue());
+                }
+            }
+        });
+    }
+
 }

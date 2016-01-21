@@ -14,6 +14,7 @@ public class Constants {
     public static String ENTER_EXIT_URL = BASE_URL+"app_log.php";
     public static String MEDITATION_URL = BASE_URL+"meditation_info.php";
     public static String MEDITATION_TIME_URL = BASE_URL+"countmeditationtime.php";
+    public static String DELETE_INFO_URL = BASE_URL+"delete_info.php";
 
 
     public static String USER_ID;
