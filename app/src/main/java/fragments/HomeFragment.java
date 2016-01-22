@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+import utils.StringUtils;
 
 /**
  * Created by sandeep on 1/14/16.
@@ -40,7 +41,7 @@ public class HomeFragment extends Fragment {
 
     View rootView;
     Typeface face ;
-    TextView congo_tv;
+    TextView congo_tv, static_tv;
     ImageView logout_img;
     private AsyncHttpClient client;
     private ProgressDialog dialog;
@@ -72,9 +73,10 @@ public class HomeFragment extends Fragment {
 
         congo_tv = (TextView) rootView.findViewById(R.id.congo_tv);
         logout_img = (ImageView) rootView.findViewById(R.id.logout_img);
+        static_tv = (TextView) rootView.findViewById(R.id.static_tv);
 
         congo_tv.setTypeface(face);
-
+        static_tv.setTypeface(face);
 
         CallApitogetTotalMeditationTime();
 
@@ -117,7 +119,30 @@ public class HomeFragment extends Fragment {
                     Log.e("onsuccess", response.toString());
                     if (response.getBoolean("ResponseCode")) {
                         String meditationTime = response.getString("Result");
-                        congo_tv.setText("congratulations you have meditated for " + meditationTime + " hours.");
+                        double meditationTIME = Double.parseDouble(meditationTime);
+
+                        meditationTIME = StringUtils.round(meditationTIME, 2);
+
+                        if(meditationTIME<=0.00){
+                            congo_tv.setText("Start meditating today.");
+                        } else {
+                           if(meditationTIME<1){
+                               // convert in minutes
+                               meditationTIME = meditationTIME*60;
+                               meditationTIME = StringUtils.round(meditationTIME, 2);
+                               congo_tv.setText("congratulations you have meditated for " + meditationTIME + " minutes.");
+                               if(meditationTIME<1){
+                                   // convert in seconds
+                                   meditationTIME = meditationTIME*60;
+                                   meditationTIME = StringUtils.round(meditationTIME, 2);
+                                   congo_tv.setText("congratulations you have meditated for " + meditationTIME + " seconds.");
+                               }
+                           } else {
+                               congo_tv.setText("congratulations you have meditated for " + meditationTIME + " hours.");
+                           }
+
+                        }
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -188,6 +213,7 @@ public class HomeFragment extends Fragment {
                 //    logout_tv.setEnabled(true);
             }
         });
+
         yes_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

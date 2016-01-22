@@ -122,7 +122,7 @@ public class CardBoardActivity extends CardboardActivity implements
 
         mOverlayView.show3DImage(mScore++, CardBoardActivity.this);
 
-        mVibrator.vibrate(50);
+    //    mVibrator.vibrate(50);
 
         mOverlayView.setAnimation(CardBoardActivity.this);
 

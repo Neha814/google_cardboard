@@ -6,9 +6,9 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <!--<include
+    <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />-->
+        layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -20,6 +20,18 @@
                 android:orientation="vertical"
                 android:weightSum="10">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9">
+                    <FrameLayout
+                        android:id="@+id/frame_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                    </FrameLayout>
+
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_layout"
                     android:layout_width="match_parent"
@@ -64,17 +76,6 @@
                         android:gravity="center"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_instruction"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="9">
-                    <FrameLayout
-                        android:id="@+id/frame_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-                    </FrameLayout>
 
                 </LinearLayout>
 

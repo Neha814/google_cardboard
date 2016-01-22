@@ -24,7 +24,7 @@ public class InstructionFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.instruction_fragment, container, false);
-        face= Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Regular.ttf");
+        face= Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Light.ttf");
 
         init();
 

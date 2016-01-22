@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -66,6 +67,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     SharedPreferences sp;
 
+    TextView static_tv;
+
     String countryName, countryCode, androidAppVersion, androidDeviceType, androidOsVersion, androidDeviceName;
 
     @Override
@@ -99,10 +102,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         play_bt = (Button) findViewById(R.id.play_bt);
         linear_layout = (LinearLayout) findViewById(R.id.linear_layout);
         image = (ImageView) findViewById(R.id.image);
+        static_tv = (TextView)findViewById(R.id.static_tv);
 
         email_edt.setTypeface(face1);
         name_edt.setTypeface(face1);
         play_bt.setTypeface(face1);
+        static_tv.setTypeface(face);
 
         play_bt.setOnClickListener(this);
 
@@ -142,7 +147,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onAnimationStart(Animation animation) {
                 linear_layout.setVisibility(View.VISIBLE);
+                static_tv.setVisibility(View.VISIBLE);
                 linear_layout.startAnimation(fade_in);
+                static_tv.startAnimation(fade_in);
             }
 
             @Override
